@@ -1,5 +1,7 @@
 # React UA + NodeJS API
 
+Simple boilerplate for web application with React based UI and nodejs-express based API. AWS lambda deploing is enabled with https://www.serverless.com.
+
 ## Development mode
 
 ### Start the UI 
