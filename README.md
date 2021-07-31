@@ -69,4 +69,12 @@ Alternatively, it can be deployed in a more traditional way, but in this case so
 * [Process managers for Express apps](https://expressjs.com/en/advanced/pm.html)
 * [Express Tutorial Part 7: Deploying to production](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment)
 
+## Eslint & code style
 
+Each folder contains coding style and formating checking tool ESLing. It configured according to [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript#airbnb-javascript-style-guide-).
+
+To check and format your code, just run in ui or server directory:
+
+```sh
+npm run esfix
+```
