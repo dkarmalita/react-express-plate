@@ -12,8 +12,6 @@ const log4js = require('log4js');
 const getRouter = require('./router');
 const getMiddlewares = require('./middlewares');
 
-// const handleError = require('./middlewares/handleError');
-
 async function createServer(config, components) {
   const logger = log4js.getLogger(config.title);
   logger.level = config.logLevel;
@@ -52,8 +50,6 @@ async function createServer(config, components) {
   // that can be used to enable CORS with various options.
 
   app.use(express.static(config.static.path));
-  // app.use(express.static(path.join(__dirname, '../../dist')));
-  // app.use(express.static(path.join(__dirname, '../public')));
   // To serve static files such as images, CSS files, and JavaScript files,
   // use the express.static built-in middleware function in Express.
 
@@ -69,10 +65,10 @@ async function createServer(config, components) {
   //     app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   // }
 
-  // app.use((err, req, res, next) => {
-  //   handleError(err, res);
-  //   next(err);
-  // });
+  app.use((err, req, res, next) => {
+    middlewares.errorMiddeware(err, res);
+    next(err);
+  });
 
   const run = () => {
     const server = app.listen(config.port, () => {
