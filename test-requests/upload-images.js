@@ -9,7 +9,7 @@ async function run(fileName){
   image.append("second", fs.createReadStream(`./${fileName}`), fileName);
   axios
     .post("http://localhost:8081/api/upload", image, { headers: image.getHeaders() })
-    .then(res => console.log('Success', res.status, res.statusText))
+    .then(res => console.log('Success', res.status, res.statusText, res.data))
     .catch(err => { console.log(err.message, err.response.data) });
 }
 
