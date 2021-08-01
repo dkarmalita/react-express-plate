@@ -54,6 +54,7 @@ router.post('*', upload, (req, res, next) => {
     console.log(req.file);
     return res.sendStatus(200);
   }
+
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
 
