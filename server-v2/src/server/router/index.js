@@ -45,7 +45,7 @@ const getRouter = async (config, components) => {
   router.post('/api/upload', upload, (req, res, next) => {
     const { files } = req;
     if (files && files.length) {
-      return res.status(200).json({ files: files.map(el => el.originalname) });
+      return res.status(200).json({ files: files.map((el) => el.originalname) });
     }
 
     return res.status(400).send('Unacceptable myme type!');
