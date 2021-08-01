@@ -43,7 +43,7 @@ const getRouter = async (config, components) => {
 
   /* eslint-disable-next-line no-unused-vars */
   router.post('/api/upload', upload, (req, res, next) => {
-    if (req.files) {
+    if (req.files && req.files.length) {
       return res.sendStatus(200);
     }
 
