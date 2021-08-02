@@ -26,7 +26,7 @@ const App = () => {
   console.log(config.title);
   document.title = config.title;
 
-  return <LoginForm />;
+  return <LoginForm config={config} />;
 };
 
 export default App;
