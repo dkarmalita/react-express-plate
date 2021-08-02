@@ -1,10 +1,9 @@
 const { getLogger } = require('log4js');
 
-const createDal = require('./dal');
-const createComponents = require('./components');
-const createServer = require('./server');
-
 const getConfig = require('./config');
+const createDal = require('./dal');
+const createComponents = require('./services');
+const createServer = require('./server');
 
 const logger = getLogger();
 

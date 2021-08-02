@@ -1,6 +1,6 @@
-const createHealthcheck = require('./healthcheck');
-const createUpload = require('./upload');
-const createUsers = require('./users');
+const createHealthcheck = require('./healthcheck-service');
+const createUpload = require('./upload-service');
+const createUsers = require('./users-service');
 
 const createComponents = async (config, dal) => {
   const components = {};
