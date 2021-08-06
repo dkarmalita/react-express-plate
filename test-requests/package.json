@@ -4,6 +4,9 @@
   "description": "",
   "main": "upload-image.js",
   "scripts": {
+    "upload-image": "node upload/image",
+    "upload-images": "node upload/images",
+    "upload-ierror": "node upload/error",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
