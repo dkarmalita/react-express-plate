@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
   title: 'Example API',
   logLevel: 'info', // 'debug' || 'info'
+  descriptionPath: path.join(__dirname, '../../DESCRIPTION.md'),
   morganLogLevel: 'tiny',
   port: 8081,
   cors: {

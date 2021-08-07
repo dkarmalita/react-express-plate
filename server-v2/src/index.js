@@ -5,10 +5,12 @@ const createDal = require('./dal');
 const createComponents = require('./services');
 const createServer = require('./server');
 
+const packageJson = require('../package.json');
+
 const logger = getLogger();
 
 const run = async () => {
-  const config = await getConfig();
+  const config = { ...await getConfig(), version: packageJson.version };
 
   const dal = await createDal(config);
 

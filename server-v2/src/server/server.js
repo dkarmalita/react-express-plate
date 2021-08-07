@@ -11,6 +11,7 @@ const log4js = require('log4js');
 
 const getRouter = require('./router');
 const getMiddlewares = require('./middlewares');
+const createSwagger = require('./swagger');
 
 async function createServer(config, components) {
   const logger = log4js.getLogger(config.title);
@@ -18,6 +19,7 @@ async function createServer(config, components) {
 
   const router = await getRouter(config, components);
   const middlewares = await getMiddlewares(config, components);
+  const swagger = await createSwagger(config);
 
   const app = express();
   app.disable('x-powered-by');
@@ -59,6 +61,12 @@ async function createServer(config, components) {
   app.use(middlewares.authMiddleware);
 
   app.use('/', router);
+
+  app.get('/api-docs.json', (req, res) => {
+    res.send(swagger.jsonData);
+  });
+
+  app.use('/api-docs', swagger.serve, swagger.handle);
 
   // if (!isProd()) {
   //     const swaggerSpec = swaggerJSDoc(options);

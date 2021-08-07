@@ -9,7 +9,6 @@ const getRouter = async (config, components) => {
 
   const router = express.Router();
 
-  /* GET home page. */
   router.get('/', (_, res) => {
     res.render(
       'index',
@@ -35,7 +34,7 @@ const getRouter = async (config, components) => {
     const loginData = await users.login(user, password);
     if (!loginData) {
       return res.status(400)
-        .send('Incorrect Username and/or Password!');
+        .send('Invalid email or password');
     }
 
     return res.json(loginData);

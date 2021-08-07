@@ -1,0 +1,115 @@
+paths:
+  /:
+    get:
+      tags:
+      - Open
+      # operationId: open
+      summary: Root API html page
+      responses:
+        '200':
+          description: |-
+            200 response
+
+  /healthcheck:
+    get:
+      tags:
+      - Open
+      # operationId: open
+      summary: Health of the API
+      responses:
+        '200':
+          description: |-
+            200 response
+
+  /api/v1/login:
+    post:
+      tags:
+      - Auth
+      summary: 'Login and retrieve an user token.'
+      # parameters:
+      #   - in: header
+      #     name: Content-Type
+      #     required: true
+      #     schema:
+      #       type: string
+      #       example: 'application/json'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - user
+              - password
+              properties:
+                user:
+                  type: string
+                  example: 'testUser@mailinator.com'
+                  description: 'Email'
+                password:
+                  type: string
+                  example: 'mypass'
+                  description: 'Password'
+      responses:
+        400:
+          description: 'Bad request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: 
+                      - string
+                    example: 'Invalid email or password'
+                    description: 'Error'
+        200:
+          description: 'Login success'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: 
+                      - string
+                    example: '1mx6L2L7AMdEsyKy5LW9s8gt6mBxdICwosVn5sjhbwykOoQJFUru6752dwsj2THN'
+                    description: 'Access Token'
+
+  /api/v1/me:
+    get:
+      tags:
+      - Auth
+      summary: 'Initiate user email address change.'
+      description: |-
+        API records user intent for changing email address. User must receive email for with link to new email address. A one-time unique token that authenticates email change  for this user must be added to confirmation link. User need to have authorisation token  and email need to be connected with this token.
+      security:
+      - BearerAuth: []
+      # parameters:
+      #   - in: header
+      #     name: Content-Type
+      #     required: true
+      #     schema:
+      #       type: string
+      #       example: 'application/json'
+      #   - in: header
+      #     name: Authorization
+      #     required: true
+      #     schema:
+      #       type: string
+      #       example: 'Bearer sYFuat5lz1y5v0LrCt7LfqJpo1AkdLgm7LbY6eRibN4NYw9Srf6aMIRJM8KbTwM6'
+      responses:
+        200:
+          description: ''
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: 
+                    - string
+                    example: 'User roles access forbidden.'
+                    description: 'Error'
