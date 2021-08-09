@@ -4,7 +4,8 @@
   "description": "",
   "main": ".eslintrc.js",
   "dependencies": {
-    "autocannon": "^7.4.0"
+    "autocannon": "^7.4.0",
+    "clinic": "^9.0.0"
   },
   "devDependencies": {
     "eslint": "^7.31.0",
@@ -16,6 +17,7 @@
   },
   "scripts": {
     "start": "node scripts/run",
+    "clinic": "clinic doctor --on-port='autocannon -c100 localhost:8081' -- node ../server-v2/src",
     "esfix": "eslint *.js scripts lib --ignore-path ../.gitignore --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
